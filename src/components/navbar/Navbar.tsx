@@ -31,7 +31,7 @@ const paths = [
 export default function Navbar() {
   const { data: session } = useSession();
   const user = session?.user;
-  const pathname = usePathname();
+  const curPath = usePathname();
 
   return (
     <header className="flex justify-between items-center py-3 px-8 border-b shadow-sm">
@@ -48,9 +48,10 @@ export default function Navbar() {
             <li key={path}>
               <Link
                 href={path}
-                className="flex items-center text-2xl rounded-full border px-3 py-1 transition hover:text-white hover:bg-black"
+                className={`flex items-center text-2xl rounded-full border px-3 py-1 transition hover:shadow-md
+                ${curPath === path ? "text-white bg-black" : ""}`}
               >
-                <span>{pathname === path ? onPath : offPath}</span>
+                <span>{curPath === path ? onPath : offPath}</span>
                 <span className="hidden sm:block text-sm ml-2">{text}</span>
               </Link>
             </li>
