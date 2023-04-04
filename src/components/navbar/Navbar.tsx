@@ -10,6 +10,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LogoIcon from "@/components/icons/LogoIcon";
 import ButtonCustom from "@/components/ButtonCustom";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const paths = [
   { path: "/", onPath: <HomeFill />, offPath: <HomeLine />, text: "Home" },
@@ -28,6 +29,8 @@ const paths = [
 ];
 
 export default function Navbar() {
+  const { data: session } = useSession();
+  const user = session?.user;
   const pathname = usePathname();
 
   return (
@@ -53,10 +56,19 @@ export default function Navbar() {
             </li>
           ))}
           <li className="ml-4">
-            <ButtonCustom
-              text={"Sign in"}
-              className={"border-b border-black px-2"}
-            />
+            {session ? (
+              <ButtonCustom
+                text={"Sign out"}
+                className={"border-b border-black px-2"}
+                onClick={signOut}
+              />
+            ) : (
+              <ButtonCustom
+                text={"Sign in"}
+                className={"border-b border-black px-2"}
+                onClick={signIn}
+              />
+            )}
           </li>
         </ul>
       </nav>
