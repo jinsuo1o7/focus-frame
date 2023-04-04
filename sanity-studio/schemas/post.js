@@ -12,7 +12,7 @@ export default {
     {
       title: 'Photo',
       name: 'photo',
-      type: 'string',
+      type: 'image',
     },
     {
       title: 'Likes',
