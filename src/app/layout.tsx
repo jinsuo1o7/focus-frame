@@ -7,6 +7,7 @@ export const metadata = {
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
 import AuthContext from "@/context/AuthContext";
+import SwrConfigContext from "@/context/SWRConfigContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
         <main className="w-full max-w-screen-2xl mx-auto">
           <AuthContext>
             <Navbar />
-            {children}
+            <SwrConfigContext>{children}</SwrConfigContext>
           </AuthContext>
         </main>
       </body>
