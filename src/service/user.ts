@@ -8,7 +8,7 @@ type OAuthUser = {
   image?: string | null;
 };
 export async function addUser({ id, email, name, username, image }: OAuthUser) {
-  return await client
+  return client
     .createIfNotExists({
       _id: id,
       _type: "user",
@@ -21,4 +21,15 @@ export async function addUser({ id, email, name, username, image }: OAuthUser) {
       bookmarks: [],
     })
     .catch(console.error);
+}
+
+export async function getUserByUsername(username: string) {
+  return client.fetch(`
+  *[_type == "user" && username == "${username}"][0]{
+  ...,
+  "id":_id,
+  following[]->{username, image},
+  followers[]->{username, image},
+  "bookmarks":bookmarks[]->_id
+  }`);
 }
