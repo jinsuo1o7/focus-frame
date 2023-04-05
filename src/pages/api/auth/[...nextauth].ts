@@ -13,6 +13,21 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_OAUTH_SECRET || "",
     }),
   ],
+  pages: {
+    signIn: "/auth/signin",
+  },
+  callbacks: {
+    async session({ session }) {
+      const user = session?.user;
+      if (user) {
+        session.user = {
+          ...user,
+          username: user.email?.split("@")[0] || "",
+        };
+      }
+      return session;
+    },
+  },
 };
 
 export default NextAuth(authOptions);
