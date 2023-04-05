@@ -6,9 +6,9 @@ type Props = {
 };
 export default function Avatar({ image, size = "small" }: Props) {
   return (
-    <div className={getAvatarSize(size)}>
+    <div className={`${getAvatarSize(size)} rounded-full overflow-hidden`}>
       <img
-        className="rounded-full"
+        className="object-cover"
         src={image ?? undefined}
         alt="avatar image"
         referrerPolicy="no-referrer"
@@ -22,8 +22,8 @@ function getAvatarSize(size: AvatarSize) {
     case "small":
       return "w-9 h-9";
     case "medium":
-      return "";
+      return "w-14 h-14";
     case "large":
-      return "";
+      return "w-20 h-20";
   }
 }
