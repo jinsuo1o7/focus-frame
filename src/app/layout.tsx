@@ -18,13 +18,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body>
-        <main className="w-full max-w-screen-2xl mx-auto">
-          <AuthContext>
-            <Navbar />
+      <body className="w-full mx-auto overflow-auto max-h-screen">
+        <AuthContext>
+          <main className="max-w-screen-2xl mx-auto bg-neutral-50">
+            <div className="sticky top-0 z-10 bg-white">
+              <Navbar />
+            </div>
             <SwrConfigContext>{children}</SwrConfigContext>
-          </AuthContext>
-        </main>
+          </main>
+          <div id="portal"></div>
+        </AuthContext>
       </body>
     </html>
   );
