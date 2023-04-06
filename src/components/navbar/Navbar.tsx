@@ -33,10 +33,11 @@ export default function Navbar() {
   const { data: session } = useSession();
   const user = session?.user;
   const curPath = usePathname();
-  const signButtonStyle = "border-b border-black px-2";
+  const signButtonStyle =
+    "text-sm md:text-lg border-b border-black sm:px-2 whitespace-nowrap";
 
   return (
-    <header className="flex justify-between items-center py-3 px-8 border-b shadow-sm sticky top-0">
+    <header className="flex justify-between items-center py-3 px-8 border-b shadow-sm">
       <Link href={"/"} className="flex items-center">
         <LogoIcon className="text-3xl mr-1" />
         <h1 className="hidden md:block text-2xl whitespace-nowrap">
@@ -50,7 +51,7 @@ export default function Navbar() {
             <li key={path}>
               <Link
                 href={path}
-                className={`flex items-center text-2xl rounded-full border px-3 py-1 transition hover:shadow-md
+                className={`flex items-center text-lg md:text-2xl rounded-full border px-3 py-1 transition hover:shadow-md
                 ${curPath === path && "text-white bg-black"}`}
               >
                 <span>{curPath === path ? onPath : offPath}</span>
