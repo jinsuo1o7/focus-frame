@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body className="w-full mx-auto overflow-auto max-h-screen">
         <AuthContext>
-          <main className="max-w-screen-2xl mx-auto bg-neutral-50">
+          <main className="max-w-screen-2xl mx-auto min-h-screen bg-neutral-50">
             <div className="sticky top-0 z-10 bg-white">
               <Navbar />
             </div>
