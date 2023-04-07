@@ -12,3 +12,8 @@ export type HomeUser = AuthUser & {
   followers: SimpleUser[];
   bookmarks: string[];
 };
+
+export type SearchUser = AuthUser & {
+  following: number;
+  followers: number;
+};
