@@ -3,7 +3,7 @@ import { SimplePost } from "@/model/post";
 import Image from "next/image";
 import PostActionBar from "@/components/postlist/PostCardSection";
 import ModalPortal from "@/components/modal/ModalPortal";
-import PostModalBG from "@/components/modal/PostModal";
+import PostModal from "@/components/modal/PostModal";
 import PostDetail from "@/components/modal/PostDetail";
 import AvatarWithCreatedAt from "@/components/postlist/AvatarWithCreatedAt";
 import CommentForm from "@/components/postlist/CommentForm";
@@ -39,9 +39,9 @@ export default function PostCard({ post, priority }: Props) {
 
       {showModal && (
         <ModalPortal>
-          <PostModalBG onClose={() => setShowModal(false)}>
+          <PostModal onClose={() => setShowModal(false)}>
             <PostDetail post={post} />
-          </PostModalBG>
+          </PostModal>
         </ModalPortal>
       )}
     </article>
