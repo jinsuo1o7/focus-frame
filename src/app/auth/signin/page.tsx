@@ -3,6 +3,12 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import SignIn from "@/components/signin/SignIn";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Signin",
+  description: "Login in with social account",
+};
 type Props = { searchParams: { callbackUrl: string } };
 export default async function SingInPage({
   searchParams: { callbackUrl },
