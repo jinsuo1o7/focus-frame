@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
-import useSWR from "swr";
-import { SimplePost } from "@/model/post";
 import PostCard from "@/components/postlist/PostCard";
 import { CircleLoader } from "react-spinners";
+import usePosts from "@/hooks/usePosts";
 
 export default function PostCardList() {
-  const { data: posts, isLoading } = useSWR<SimplePost[]>("/api/posts");
+  const { posts, isLoading } = usePosts();
   return (
     <section className="w-full">
       {isLoading && <CircleLoader className="mx-auto" />}

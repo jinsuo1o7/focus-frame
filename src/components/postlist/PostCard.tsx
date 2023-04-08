@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SimplePost } from "@/model/post";
 import Image from "next/image";
-import PostActionBar from "@/components/postlist/PostCardSection";
+import PostActionBar from "@/components/postlist/PostActionBar";
 import ModalPortal from "@/components/modal/ModalPortal";
 import PostModal from "@/components/modal/PostModal";
 import PostDetail from "@/components/modal/PostDetail";
@@ -33,7 +33,7 @@ export default function PostCard({ post, priority }: Props) {
       </div>
 
       <section className="p-4 bg-neutral-50">
-        <PostActionBar text={text} likes={likes} comments={comments} />
+        <PostActionBar post={post} />
         <CommentForm />
       </section>
 
