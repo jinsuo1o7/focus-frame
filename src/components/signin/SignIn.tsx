@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ClientSafeProvider } from "next-auth/src/react/types";
+import { ClientSafeProvider } from "next-auth/react/types";
 import SingInButton from "@/components/signin/SingInButton";
 import signInPic from "../../../public/singIn.jpg";
 import Image from "next/image";
