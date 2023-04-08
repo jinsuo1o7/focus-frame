@@ -1,5 +1,5 @@
 import React from "react";
-type AvatarSize = "small" | "medium" | "large";
+type AvatarSize = "small" | "medium" | "large" | "xlarge";
 type Props = {
   image?: string | null;
   size?: AvatarSize;
@@ -7,6 +7,7 @@ type Props = {
 export default function Avatar({ image, size = "small" }: Props) {
   return (
     <div className={`${getAvatarSize(size)} rounded-full overflow-hidden`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         className="object-cover"
         src={image ?? undefined}
@@ -25,5 +26,7 @@ function getAvatarSize(size: AvatarSize) {
       return "w-14 h-14";
     case "large":
       return "w-20 h-20";
+    case "xlarge":
+      return "w-32 h-32";
   }
 }

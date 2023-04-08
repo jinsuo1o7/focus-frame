@@ -12,7 +12,9 @@ export default function CommentForm() {
       <ButtonCustom
         text={"Post"}
         onClick={() => {}}
-        className={"bg-red-300 px-4 py-1 rounded-lg font-semibold text-white"}
+        className={
+          "bg-red-300 px-3 py-1  rounded-lg text-sm font-semibold text-white"
+        }
       />
     </form>
   );
