@@ -12,7 +12,7 @@ export default function PostCardList() {
       {isLoading && <CircleLoader className="mx-auto" />}
 
       {posts && (
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {posts.map((post, index) => (
             <li key={post.id}>
               <PostCard post={post} priority={index < 4} />

@@ -15,12 +15,12 @@ export default function PostCard({ post, priority }: Props) {
     <article className="border-2 border-black">
       <AvatarWithCreatedAt
         username={username}
-        userImage={image}
+        userImage={userImage}
         createdAt={createdAt}
       />
       <div
         onClick={() => setShowModal(true)}
-        className="relative w-full h-96 md:h-[300px] xl:h-[400px] overflow-hidden aspect-square"
+        className="relative w-full h-96 md:h-[600px] xl:h-[450px] overflow-hidden aspect-square"
       >
         <Image
           src={image}
