@@ -3,10 +3,9 @@ import { FullPost, SimplePost } from "@/model/post";
 import useSWR from "swr";
 import Image from "next/image";
 import AvatarWithCreatedAt from "@/components/postlist/AvatarWithCreatedAt";
-import CommentForm from "@/components/postlist/CommentForm";
 import Avatar from "@/components/Avatar";
-import HeartLine from "@/components/icons/HeartLine";
-import BookMarkLine from "@/components/icons/BookMarkLine";
+import PostActionBar from "@/components/postlist/PostActionBar";
+import CommentForm from "@/components/postlist/CommentForm";
 type Props = { post: SimplePost };
 export default function PostDetail({ post }: Props) {
   const { id, username, userImage, image, text, createdAt, likes } = post;
@@ -45,10 +44,7 @@ export default function PostDetail({ post }: Props) {
             )}
         </ul>
         <div className="px-4 pb-4 pt-2 bg-white">
-          <div className="flex items-center gap-2 text-xl cursor-pointer pt-2 px-2">
-            <HeartLine />
-            <BookMarkLine />
-          </div>
+          <PostActionBar post={post} />
           <CommentForm />
         </div>
       </div>
