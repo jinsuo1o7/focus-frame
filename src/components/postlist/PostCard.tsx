@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { SimplePost } from "@/model/post";
+import { Comment, SimplePost } from "@/model/post";
 import Image from "next/image";
 import PostActionBar from "@/components/postlist/PostActionBar";
 import ModalPortal from "@/components/modal/ModalPortal";
 import PostModal from "@/components/modal/PostModal";
 import PostDetail from "@/components/modal/PostDetail";
 import AvatarWithCreatedAt from "@/components/postlist/AvatarWithCreatedAt";
-import CommentForm from "@/components/postlist/CommentForm";
+import usePosts from "@/hooks/usePosts";
 type Props = { post: SimplePost; priority?: boolean };
 export default function PostCard({ post, priority }: Props) {
   const [showModal, setShowModal] = useState(false);
-  const { username, userImage, image, text, createdAt, likes, comments } = post;
+  const { username, userImage, image, createdAt } = post;
+  const { postComment } = usePosts();
+  const handlePostComment = (comment: Comment) => {
+    postComment(post, comment);
+  };
   return (
     <article className="border-2 border-black">
       <AvatarWithCreatedAt
@@ -33,8 +37,7 @@ export default function PostCard({ post, priority }: Props) {
       </div>
 
       <section className="p-4 bg-neutral-50">
-        <PostActionBar post={post} />
-        <CommentForm />
+        <PostActionBar post={post} onComment={handlePostComment} />
       </section>
 
       {showModal && (
