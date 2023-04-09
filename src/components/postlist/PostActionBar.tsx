@@ -7,12 +7,15 @@ import BookMarkFill from "@/components/icons/BookMarkFill";
 import { SimplePost } from "@/model/post";
 import usePosts from "@/hooks/usePosts";
 import useMe from "@/hooks/useMe";
+import CommentForm from "@/components/postlist/CommentForm";
+import { Comment } from "@/model/post";
 
 type Props = {
   post: SimplePost;
+  onComment: (comment: Comment) => void;
 };
-export default function PostActionBar({ post }: Props) {
-  const { id, text, likes, comments, username, createdAt } = post;
+export default function PostActionBar({ post, onComment }: Props) {
+  const { id, text, likes, comments } = post;
   const { user, setBookmark } = useMe();
   const { setLike } = usePosts();
   const liked = user ? likes.includes(user.username) : false;
@@ -22,6 +25,9 @@ export default function PostActionBar({ post }: Props) {
   };
   const handleBookmark = (bookmark: boolean) => {
     user && setBookmark(id, bookmark);
+  };
+  const handleComment = (comment: string) => {
+    user && onComment({ comment, username: user.username, image: user.image });
   };
 
   return (
@@ -48,6 +54,7 @@ export default function PostActionBar({ post }: Props) {
         {likes.length} {likes.length > 0 ? "likes" : "like"} | {comments}{" "}
         {comments && comments > 1 ? "comments" : "comment"}
       </p>
+      <CommentForm onPostComment={handleComment} />
     </section>
   );
 }
