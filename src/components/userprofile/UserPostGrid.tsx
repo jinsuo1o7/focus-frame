@@ -1,18 +1,10 @@
 import React from "react";
-import useSWR from "swr";
 import { CircleLoader } from "react-spinners";
-import { SimplePost } from "@/model/post";
 import PostGridCard from "@/components/userprofile/PostGridCard";
-type Props = {
-  username: string;
-  query: string;
-};
-export default function UserPostGrid({ username, query }: Props) {
-  const {
-    data: posts,
-    isLoading,
-    error,
-  } = useSWR<SimplePost[]>(`/api/users/${username}/${query}`);
+import usePosts from "@/hooks/usePosts";
+
+export default function UserPostGrid() {
+  const { posts, isLoading } = usePosts();
   return (
     <div className="p-8">
       {isLoading && <CircleLoader className="mx-auto" />}
