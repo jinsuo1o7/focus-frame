@@ -17,7 +17,7 @@ export default function FollowButton({ user }: Props) {
   const showButton = loggedInUser && loggedInUser.username !== username;
   const isFollowing =
     loggedInUser &&
-    loggedInUser.following.find((user) => user.username === username);
+    loggedInUser.following?.find((user) => user.username === username);
   const text = isFollowing ? "Unfollow" : "Follow";
 
   const handleFollow = async () => {
