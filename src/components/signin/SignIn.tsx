@@ -17,14 +17,17 @@ export default function SignIn({ providers, callbackUrl }: Props) {
         <p className="text-neutral-400 mb-4">
           Welcome back! Please enter with social account
         </p>
-        {Object.values(providers).map(({ name, id }) => (
-          <SingInButton
-            key={id}
-            id={id}
-            name={name}
-            callbackUrl={callbackUrl}
-          />
-        ))}
+        {Object.values(providers).map(
+          ({ name, id }) =>
+            name === "Google" && (
+              <SingInButton
+                key={id}
+                id={id}
+                name={name}
+                callbackUrl={callbackUrl}
+              />
+            )
+        )}
       </div>
       <div className="relative basis-0 hidden lg:block lg:basis-1/2">
         <Image src={signInPic} alt={"Sing with us"} fill />
