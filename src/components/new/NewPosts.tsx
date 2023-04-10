@@ -129,8 +129,9 @@ export default function NewPosts({ user: { image, username } }: Props) {
           name="text"
           id="input-text"
           required
-          rows={10}
+          rows={5}
           placeholder={"Write a caption"}
+          maxLength={50}
           ref={textRef}
         />
         {error && (

@@ -46,6 +46,7 @@ export default function usePosts() {
 
   const postComment = useCallback(
     (post: SimplePost, comment: Comment) => {
+      if (comment.comment.length > 50) return;
       const newPost = {
         ...post,
         comments: post.comments + 1,

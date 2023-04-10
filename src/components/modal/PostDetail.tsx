@@ -32,7 +32,7 @@ export default function PostDetail({ post }: Props) {
           {comments &&
             comments.map(
               ({ image, comment, username: commentUsername }, index) => (
-                <li key={index} className="flex items-center">
+                <li key={index} className="flex items-center mb-3">
                   <Avatar image={image} />
                   <p className="ml-3">
                     <span className="font-bold mr-1">{commentUsername}</span>
