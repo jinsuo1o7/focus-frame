@@ -24,6 +24,17 @@ export async function getFollowingPostsOf(username: string) {
     .then(mapPosts);
 }
 
+export async function getAllPosts() {
+  return client
+    .fetch(
+      `
+    *[_type =="post"]
+    | order(_createdAt desc){${simplePostProjection}}
+    `
+    )
+    .then(mapPosts);
+}
+
 export async function getPost(id: string) {
   return client
     .fetch(

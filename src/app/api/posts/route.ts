@@ -1,10 +1,11 @@
-import { createPost, getFollowingPostsOf } from "@/service/posts";
+import { createPost, getAllPosts, getFollowingPostsOf } from "@/service/posts";
 import { NextRequest, NextResponse } from "next/server";
 import { withSessionUser } from "@/util/session";
 
 export async function GET() {
   return withSessionUser(async (user) => {
-    return getFollowingPostsOf(user.username).then(NextResponse.json);
+    // return getFollowingPostsOf(user.username).then(NextResponse.json);
+    return getAllPosts().then(NextResponse.json);
   });
 }
 
