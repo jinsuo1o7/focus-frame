@@ -33,7 +33,7 @@ export default function PostActionBar({ post, onComment }: Props) {
   return (
     <section>
       <div className="flex justify-between">
-        <p className="font-semibold">{text}</p>
+        <p className="font-semibold truncate">{text}</p>
 
         <div className="flex items-center gap-2 text-xl cursor-pointer text-gray-700">
           <ToggleButton

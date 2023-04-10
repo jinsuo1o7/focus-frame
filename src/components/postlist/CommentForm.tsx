@@ -21,6 +21,7 @@ export default function CommentForm({ onPostComment }: Props) {
         type="text"
         placeholder="Add a comment"
         required
+        maxLength={50}
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       />
