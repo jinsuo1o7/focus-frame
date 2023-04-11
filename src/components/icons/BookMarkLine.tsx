@@ -2,5 +2,5 @@ import React from "react";
 import { BsBookmark } from "react-icons/bs";
 
 export default function BookMarkLine() {
-  return <BsBookmark />;
+  return <BsBookmark className="text-amber-400" />;
 }
